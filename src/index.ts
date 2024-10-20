@@ -1,7 +1,7 @@
-const stringCalculator = (input: string): number => {
-  if (input === "") {
-    return 0
+const stringCalculator = {
+  add: (input: string): number => {
+    const numbers = input.split(",").map(Number)
+    return numbers.reduce((total, num) => total + num, 0)
   }
-  return 0
 }
 export default stringCalculator
