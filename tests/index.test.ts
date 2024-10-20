@@ -24,4 +24,8 @@ describe("String Calculator", () => {
   test("should return the sum of multiple numbers with custom delimiter", () => {
     expect(stringCalculator.calculate("//;\n2;3;4;6;2;10")).toBe(27)
   })
+
+  test("Calling calculate with a negative number will throw an exception: 'negative numbers not allowed <negative_number>'", () => {
+    expect(() => stringCalculator.calculate("2,-3,4,6,-2,10,-12")).toThrow("negative numbers not allowed -3,-2,-12")
+  })
 })

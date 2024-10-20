@@ -4,14 +4,13 @@ type StringCalculator = {
   hasCustomDelimiter: (input: string) => boolean
   getDelimiter: (input: string) => string
   getNumbers: (input: string) => number[]
+  checkNegetiveNumbers: (numbers: number[]) => void
 }
 
 const stringCalculator: StringCalculator = {
   calculate: function (input: string): number {
-    if (this.hasCustomDelimiter(input)) {
-      return this.add(this.getNumbers(input))
-    }
-    const numbers = input.split(/\n|,/g).map(Number)
+    const numbers = this.getNumbers(input)
+    this.checkNegetiveNumbers(numbers)
     return this.add(numbers)
   },
   add: function (numbers: number[]): number {
@@ -24,7 +23,14 @@ const stringCalculator: StringCalculator = {
     return input.split("\n")[0].split("//")[1]
   },
   getNumbers: function (input: string): number[] {
+    if (!this.hasCustomDelimiter(input)) return input.split(/\n|,/g).map(Number)
     return input.split("\n")[1].split(this.getDelimiter(input)).map(Number)
+  },
+  checkNegetiveNumbers: function (numbers: number[]) {
+    const negativeNumbers = numbers.filter((num) => num < 0)
+    if (negativeNumbers.length > 0) {
+      throw new Error(`negative numbers not allowed ${negativeNumbers.join(",")}`)
+    }
   }
 }
 export default stringCalculator
