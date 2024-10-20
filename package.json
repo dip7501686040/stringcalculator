@@ -1,0 +1,22 @@
+{
+  "name": "stringcalculator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dipankar Saha",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./build/index.js",
+    "test": "jest",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "jest": "^29.7.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.13",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  }
+}
